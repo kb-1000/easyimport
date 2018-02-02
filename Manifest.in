@@ -1,0 +1,9 @@
+include *.txt
+include *.py
+include setup.cfg
+include Manifest
+include Manifest.in
+recursive-include docs *
+recursive-include test *
+recursive-include easyimport.egg-info *
+recursive-exclude * *.pyc *~ .DS_Store *.pyo
