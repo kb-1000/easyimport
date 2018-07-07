@@ -93,11 +93,11 @@ class EasyImporter(_six.with_metaclass(_EasyImporterMeta, object)):
 
     def __radd__(self, s):
         return s + self.__obj
- 
+
 
 easyimporter = EasyImporter()
 
 if __name__ == "__main__":
     print(easyimporter)
     print(easyimporter.sys)
-    print(type(e.six.moves))
+    print(type(easyimporter.six.moves))
