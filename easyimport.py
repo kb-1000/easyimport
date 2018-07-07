@@ -29,25 +29,22 @@ import six as _six
 _str = _six.text_type
 _bytes = _six.binary_type
 
-def EasyImporter(prefix=""):
-    if not isinstance(prefix, _str):
-        try:
-            prefix = _str(prefix)
-        except Exception:
-            raise TypeError("prefix must be a string")
-    if prefix in modules:
-        return modules[prefix]
-    else:
-        importer = _EasyImporter(prefix)
-        modules[prefix] = importer
-        return importer
-
-
 class _EasyImporterMeta(type):
-    pass
+    def __call__(cls, prefix=""):
+        if not isinstance(prefix, _str):
+            try:
+                prefix = _str(prefix)
+            except Exception:
+                raise TypeError("prefix must be a string")
+        if prefix in modules:
+            return modules[prefix]
+        else:
+            importer = super(_EasyImporterMeta, cls).__call__(prefix)
+            modules[prefix] = importer
+            return importer
 
 
-class _EasyImporter(_six.with_metaclass(_EasyImporterMeta, object)):
+class EasyImporter(_six.with_metaclass(_EasyImporterMeta, object)):
     def __init__(self, prefix=""):
         self.__prefix = prefix
         if prefix:
@@ -93,7 +90,7 @@ class _EasyImporter(_six.with_metaclass(_EasyImporterMeta, object)):
     def __radd__(self, s):
         return s + self.__obj
  
-_EasyImporter.__name__ = "EasyImporter"
+
 easyimporter = EasyImporter()
 
 if __name__ == "__main__":
