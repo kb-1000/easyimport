@@ -3,7 +3,11 @@ import sys
 from importlib import import_module as _import_module
 from functools import partial as _partial
 
-modules = {}
+try:
+    modules.clear()
+except NameError:
+    modules = {}
+
 __all__ = ["EasyImporter", "easyimporter", "modules"]
 _special = ["__call__", "__str__", "__add__", "__radd__"]
 
@@ -96,3 +100,4 @@ easyimporter = EasyImporter()
 if __name__ == "__main__":
     print(easyimporter)
     print(easyimporter.sys)
+    print(type(e.six.moves))
