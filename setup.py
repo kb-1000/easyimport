@@ -4,10 +4,8 @@ import io
 with io.open("README.rst", "rt", encoding="utf-8") as fp:
     long_description = fp.read()
 
-try:
-    from setuptools import setup
-except ImportError:
-    from distutils.core import setup
+from setuptools import setup
+
 
 setup(name="easyimport",
       version="0.91",
@@ -18,4 +16,7 @@ setup(name="easyimport",
       long_description=long_description,
       url="https://github.com/kaeptmblaubaer1000/easyimport/",
       download_url="https://github.com/kaeptmblaubaer1000/easyimport/archive/stable.zip",
+      install_requires=[
+          "six>=1.11.0",
+      ],
 )

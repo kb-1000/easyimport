@@ -24,14 +24,10 @@ def name(obj):
     elif hasattr(obj, "__name__"):
         return str(obj.__name__)
 
-try:
-    unicode
-except NameError:
-    _str = str
-    _bytes = bytes
-else:
-    _bytes = str
-    _str = unicode
+import six as _six
+
+_str = _six.text_type
+_bytes = _six.binary_type
 
 def EasyImporter(prefix=""):
     if not isinstance(prefix, _str):
