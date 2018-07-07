@@ -43,7 +43,11 @@ def EasyImporter(prefix=""):
         return importer
 
 
-class _EasyImporter:
+class _EasyImporterMeta(type):
+    pass
+
+
+class _EasyImporter(_six.with_metaclass(_EasyImporterMeta, object)):
     def __init__(self, prefix=""):
         self.__prefix = prefix
         if prefix:
