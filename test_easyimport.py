@@ -8,3 +8,12 @@ class CacheTest(unittest.TestCase):
 
     def test_constructor(self):
         self.assertIs(EasyImporter(), EasyImporter())
+
+    def test_six(self):
+        self.assertIs(e.six, e.six)
+
+    def test_six_moves(self):
+        self.assertIs(e.six.moves, e.six.moves)
+
+    def test_six_moves_urllib(self):
+        self.assertIs(e.six.moves.urllib, e.six.moves.urllib)
