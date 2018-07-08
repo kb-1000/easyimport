@@ -1,7 +1,11 @@
 from __future__ import unicode_literals, absolute_import
+
+
 import sys
 from importlib import import_module as _import_module
 from functools import partial as _partial
+from types import FunctionType as _FunctionType
+
 
 try:
     modules.clear()
@@ -75,7 +79,7 @@ class EasyImporter(_six.with_metaclass(_EasyImporterMeta, object)):
                 return repr(self.__obj)
             else:
                 r = self.__obj.__repr__
-                if isinstance(r, type(EasyImporter)):
+                if isinstance(r, _FunctionType):
                     return r()
                 else:
                     return r()
