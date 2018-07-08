@@ -12,6 +12,13 @@ try:
 except NameError:
     modules = {}
 
+_ismodule_overrides = {
+        "six.moves",
+        "six.moves.urllib",
+        "six.moves.urllib.parse",
+        "six.moves.urllib.request",
+}
+
 __all__ = ["EasyImporter", "easyimporter", "modules"]
 _special = ["__call__", "__str__", "__add__", "__radd__"]
 
@@ -66,7 +73,8 @@ class EasyImporter(_six.with_metaclass(_EasyImporterMeta, object)):
 
     def __getattr__(self, attr):
         if self.__obj is not None:
-            if hasattr(self.__obj, attr):
+            prefix = self.__prefix + "." + attr
+            if hasattr(self.__obj, attr) and not (prefix in sys.modules and getattr(self.__obj, attr) is sys.modules[prefix]) and prefix not in _ismodule_overrides:
                 return getattr(self.__obj, attr)
             else:
                 return EasyImporter(self.__prefix + "." + attr)
