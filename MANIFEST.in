@@ -1,9 +1,4 @@
-include *.txt
-include *.py
-include setup.cfg
+include LICENSE
 include test_easyimport.py
-include MANIFEST.in
 recursive-include docs *
-recursive-include test *
-recursive-include easyimport.egg-info *
-recursive-exclude * *.pyc *~ .DS_Store *.pyo
+recursive-exclude * *~ .DS_Store
