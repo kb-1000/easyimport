@@ -1,8 +1,8 @@
 include *.txt
 include *.py
 include setup.cfg
-include Manifest
-include Manifest.in
+include test_easyimport.py
+include MANIFEST.in
 recursive-include docs *
 recursive-include test *
 recursive-include easyimport.egg-info *
