@@ -1,7 +1,9 @@
 *.pyc
 *.pyo
-/build
-/dist
-*.egg-info
-MANIFEST
-PKG-INFO
+__pycache__/
+/build/
+/dist/
+*.egg-info/
+*.dist-info/
+.eggs/
+*.egg
