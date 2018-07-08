@@ -31,3 +31,15 @@ class TypeTest(unittest.TestCase):
 
     def test_easyimporter(self):
         self.assertIsInstance(e, EasyImporter)
+
+    def test_six(self):
+        self.assertIsInstance(e.six, EasyImporter)
+
+    def test_six_moves(self):
+        self.assertIsInstance(e.six.moves, EasyImporter)
+
+    def test_six_moves_urllib(self):
+        self.assertIsInstance(e.six.moves.urllib, EasyImporter)
+
+    def test_sys_modules(self):
+        self.assertNotIsInstance(e.sys.modules, EasyImporter)
