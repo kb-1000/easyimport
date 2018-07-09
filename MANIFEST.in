@@ -1,4 +1,3 @@
-include LICENSE
 include test_easyimport.py
 recursive-include docs *
 recursive-exclude * *~ .DS_Store
